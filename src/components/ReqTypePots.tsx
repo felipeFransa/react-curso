@@ -10,9 +10,29 @@ export const ReqPots = () => {
   const handleAddBodyChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setAddBodyText(e.target.value)
   }
-  const handleAddClick = () => {
-    
+  const handleAddClick = async () => {
+    if(addTitleText && addBodyText){
+      let response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POTS',
+        body: JSON.stringify({
+          title: addTitleText,
+          body: addBodyText,
+          userId: 1
+        }),
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      });
+      let json = await response.json();
+      if(json.id){
+        alert("Pots adicionado com sucesso")
+      }else{
+        alert('ocorreu um erro!')
+      }
+    }else{
+      alert('Preencha os campos')}
   }
+  
   return(
     <div>
       <fieldset className="border-2 mb-3 p-3">
