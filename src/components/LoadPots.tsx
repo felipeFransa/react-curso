@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Pots } from '../types/Pots'
 
-
 export const PotsPage = () => {
   const [pots, setPots] = useState<Pots[]>([]);
  const [loading, setLoading] = useState<boolean>(false);
@@ -39,5 +38,4 @@ export const PotsPage = () => {
       </div>
     </> }
   </div>
-)
-}
+)}

@@ -1,6 +1,10 @@
 import { ChangeEvent, useState } from "react"
 
-export const ReqPots = () => {
+type Props = {
+  onAdd: (title: string, body: string) => void;
+}
+
+export const ReqPots = ({onAdd }: Props) => {
   const [addTitleText, setAddTitleText] = useState('')
   const [addBodyText, setAddBodyText] = useState('')
 
@@ -10,29 +14,14 @@ export const ReqPots = () => {
   const handleAddBodyChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setAddBodyText(e.target.value)
   }
-  const handleAddClick = async () => {
+  const handleAddClick = () => {
     if(addTitleText && addBodyText){
-      let response = await fetch('https://jsonplaceholder.typicode.com/posts', {
-        method: 'POST',
-        body: JSON.stringify({
-          title: addTitleText,
-          body: addBodyText,
-          userId: 1
-        }),
-        headers:{
-          'Content-Type': 'application/json'
-        }
-      });
-      let json = await response.json();
-      if(json.id){
-        alert("Pots adicionado com sucesso")
-      }else{
-        alert('ocorreu um erro!')
-      }
+      onAdd(addTitleText, addBodyText)
     }else{
-      alert('Preencha os campos')}
+      alert('Preencha todos os campos')
+    }
   }
-
+  
   return(
     <div>
       <fieldset className="border-2 mb-3 p-3">
