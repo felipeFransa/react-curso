@@ -13,7 +13,7 @@ export const ReqPots = () => {
   const handleAddClick = async () => {
     if(addTitleText && addBodyText){
       let response = await fetch('https://jsonplaceholder.typicode.com/posts', {
-        method: 'POTS',
+        method: 'POST',
         body: JSON.stringify({
           title: addTitleText,
           body: addBodyText,
@@ -32,7 +32,7 @@ export const ReqPots = () => {
     }else{
       alert('Preencha os campos')}
   }
-  
+
   return(
     <div>
       <fieldset className="border-2 mb-3 p-3">
