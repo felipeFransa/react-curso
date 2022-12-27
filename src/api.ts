@@ -5,25 +5,14 @@ const http = axios.create({
 })
 
 export const api = {
+  // Requisição type GET
   getAllPosts: async () => {
     let response = await http.get('/posts')
     return response.data;
-    /*
-    let response = await fetch(`${BASE}/posts`);
-    let json = await response.json();
-    return json;
-    */
   },
+  // Requisição type Post
   addNewPost: async (title: string, body: string, userId: number) => {
     let response = await http.post('/posts', {title, body, userId})
     return response.data;
-    /*
-    let response = await fetch(`${BASE}/posts`, {
-      method: 'POST',
-      body: JSON.stringify({title, body, userId: 1}),
-      headers:{'Content-Type': 'application/json'}});
-    let json = await response.json();
-    return json;
-    */
   }
 }

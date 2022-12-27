@@ -4,6 +4,7 @@ import { Formulario } from './components/Formulario'
 import { Patrulha } from './components/Patrulha';
 import { PotsPage } from './components/LoadPots'
 import { ReqPots } from './components/ReqTypePots'
+import { Contador } from './components/userReducers'
 import { api } from './api'
 
 
@@ -19,6 +20,7 @@ const App = () => {
   return (
     <div>
       <ReqPots onAdd={handleAddPost}/>
+      <Contador/>
     </div>
   ) 
 }
