@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Pots } from '../types/Pots'
+import { api } from '../api'
 
 export const PotsPage = () => {
   const [pots, setPots] = useState<Pots[]>([]);
@@ -12,8 +13,7 @@ export const PotsPage = () => {
  const loadPots = async () => {
   try {
     setLoading(true)
-    let response = await fetch('https://jsonplaceholder.typicode.com/posts');
-    let json = await response.json();
+    let json = await api.getAllPosts();
     setLoading(false)
     setPots(json);
   }
