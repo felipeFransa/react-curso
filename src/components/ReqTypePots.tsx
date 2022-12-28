@@ -1,12 +1,26 @@
-import { ChangeEvent, useState } from "react"
+import { ChangeEvent, useState, useEffect } from "react"
+import { api } from '../api'
 
 type Props = {
   onAdd: (title: string, body: string) => void;
 }
 
-export const ReqPots = ({onAdd }: Props) => {
+export const ReqPots = () => {
   const [addTitleText, setAddTitleText] = useState('')
   const [addBodyText, setAddBodyText] = useState('')
+
+  useEffect(() =>{
+    handleAddPost(addTitleText, addBodyText);
+  }, [])
+
+  const handleAddPost = async (title: string, body: string) => {
+    let json = await api.addNewPost(title, body, 1);
+    if(json.id){
+      alert(`${addTitleText} - ${addBodyText}`)
+    }else{
+      alert('Ocorreu algum erro!')
+    }
+  }
 
   const handleAddTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setAddTitleText(e.target.value)
@@ -16,7 +30,7 @@ export const ReqPots = ({onAdd }: Props) => {
   }
   const handleAddClick = () => {
     if(addTitleText && addBodyText){
-      onAdd(addTitleText, addBodyText)
+     alert('Adicionado com sucesso!')
     }else{
       alert('Preencha todos os campos')
     }
