@@ -3,6 +3,7 @@ import { Home } from './pages/Home'
 import { About } from './pages/About'
 import { AboutFelipe } from './pages/AboutFelipe'
 import { AboutSilva } from './pages/AboutSilva'
+import { NotFound } from './pages/NotFound'
 
 const App = () => {
   
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/sobre" element={<About />}/>
           <Route path="/sobre/felipe" element={<AboutFelipe />}/>
           <Route path="/sobre/silva" element={<AboutSilva />}/>
+          <Route path="#" element={<NotFound />}/>
         </Routes>
       </div>
       <hr />
